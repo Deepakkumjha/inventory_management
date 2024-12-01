@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <h3>The Product Borrowed by you are:</h3>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Product Borrowed</th>
+                <th scope="col">Borrowed Date</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Return</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for i in data %}
+
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i.product.name}}</td>
+                <td>{{i.borrowed_data}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.due_date}}</td>
+                <td><a href="{% url "return" i.id %}">Return</a></td>
+
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

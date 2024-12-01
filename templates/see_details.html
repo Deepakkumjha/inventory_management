@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Borrowed Date</th>
+                <th scope="col">Due Date</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in products %}
+
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{product.product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.borrowed_data}}</td>
+                <td>{{product.due_date}}</td>
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

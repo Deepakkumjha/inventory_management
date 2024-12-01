@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Admin</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "add" %}">Add New Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "assign_product" %}">Assign Product</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% comment %} this is table for all product {% endcomment %}
+    <h3>All Products</h3>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in all_products %}
+
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.total_quantity}}</td>
+                <td>{{product.desc}}</td>
+                <td><a href="{% url "edit" product.id %}">Edit</a></td>
+                <td><a href="{% url "delete" product.id %}">Delete</a></td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+
+
+    {% comment %} this is table for low_products {% endcomment %}
+    <h3>Low Quantity Products</h3>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in low_products %}
+
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.total_quantity}}</td>
+                <td>{{product.desc}}</td>
+                <td><a href="{% url "edit" product.id %}">Edit</a></td>
+                <td><a href="{% url "delete" product.id %}">Delete</a></td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <h3>List Of Borrowed User </h3>
+    {% for user in all_user %}
+    <p>{{user}}- <a href="{% url "see_details" user.id %}">See Details</a> </p>
+    
+    {% endfor %}
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
